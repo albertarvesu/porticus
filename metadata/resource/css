@@ -1,0 +1,16 @@
+{
+    "id": "ExtBox1-ext-gen34625",
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "url": "resources/css/porticus.css"
+    },
+    "customConfigs": [],
+    "designerId": "67bedc7c-df57-4cc4-843a-14f87dc34c9c",
+    "$viewOrder": 0,
+    "expanded": true
+}

@@ -1,0 +1,23 @@
+.flickr-item {
+	display: inline-block;
+	width: 265px;
+}
+
+.flickr-item .x-list-item-label {
+	border-top: none !important;
+	width: 265px;
+	text-align: center;
+}
+
+.flickr-item .title {
+	padding-top: 20px;
+	font-size: 13px;
+}
+
+.flickr-item .title span {
+	text-shadow: 0 1px 0 black;
+	color: #AAA;
+	font-family: 'Quattrocento Sans', sans-serif;
+	text-overflow: ellipis;
+	overflow: hidden;
+}
