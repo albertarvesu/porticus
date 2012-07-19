@@ -25,7 +25,17 @@ Ext.define('MyApp.view.HomePanel', {
             {
                 xtype: 'titlebar',
                 docked: 'top',
-                title: 'Porticus'
+                title: 'Porticus',
+                items: [
+                    {
+                        xtype: 'button',
+                        hidden: true,
+                        id: 'HomeBack',
+                        itemId: 'mybutton',
+                        ui: 'back',
+                        text: 'Back'
+                    }
+                ]
             },
             {
                 xtype: 'toolbar',
@@ -38,12 +48,15 @@ Ext.define('MyApp.view.HomePanel', {
                 items: [
                     {
                         xtype: 'button',
+                        id: 'Explore',
+                        itemId: 'mybutton',
                         iconCls: 'search',
                         iconMask: true,
                         text: 'Explore'
                     },
                     {
                         xtype: 'button',
+                        itemId: 'Login',
                         iconCls: 'user',
                         iconMask: true,
                         text: 'Login'
@@ -75,8 +88,54 @@ Ext.define('MyApp.view.HomePanel', {
                         type: 'listpaging'
                     }
                 ]
+            },
+            {
+                xtype: 'button',
+                centered: true,
+                hidden: true,
+                id: 'FBLogin',
+                padding: '20px 30px',
+                ui: 'action',
+                iconCls: 'team',
+                iconMask: true,
+                text: 'Login to Facebook'
+            }
+        ],
+        listeners: [
+            {
+                fn: 'onHomeBackTap',
+                event: 'tap',
+                delegate: '#HomeBack'
+            },
+            {
+                fn: 'onExploreTap',
+                event: 'tap',
+                delegate: '#Explore'
+            },
+            {
+                fn: 'onLoginTap',
+                event: 'tap',
+                delegate: '#Login'
             }
         ]
+    },
+
+    onHomeBackTap: function(button, e, options) {
+        this.down("#FlickrList").show();
+        this.down("#HomeBack").hide();
+        this.down("#FBLogin").hide();
+    },
+
+    onExploreTap: function(button, e, options) {
+        this.down("#FlickrList").show();
+        this.down("#HomeBack").hide();
+        this.down("#FBLogin").hide();
+    },
+
+    onLoginTap: function(button, e, options) {
+        this.down("#FlickrList").hide();
+        this.down("#HomeBack").show();
+        this.down("#FBLogin").show();
     }
 
 });

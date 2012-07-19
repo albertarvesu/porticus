@@ -31,7 +31,52 @@
                 "designer|userClassName": "MyTitleBar"
             },
             "customConfigs": [],
-            "expanded": true
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen11066",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "hidden": true,
+                        "id": "HomeBack",
+                        "itemId": "mybutton",
+                        "ui": "back",
+                        "iconCls": null,
+                        "text": "Back",
+                        "designer|userClassName": "MyButton2"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen13767",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onHomeBackTap",
+                                "implHandler": [
+                                    "this.down(\"#FlickrList\").show();",
+                                    "this.down(\"#HomeBack\").hide();",
+                                    "this.down(\"#FBLogin\").hide();"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onHomeBackTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
         },
         {
             "id": "ExtBox1-ext-gen28512",
@@ -59,13 +104,38 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "id": "Explore",
+                        "itemId": "mybutton",
                         "iconCls": "search",
                         "iconMask": true,
                         "text": "Explore",
                         "designer|userClassName": "MyButton"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen17131",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onExploreTap",
+                                "implHandler": [
+                                    "this.down(\"#FlickrList\").show();",
+                                    "this.down(\"#HomeBack\").hide();",
+                                    "this.down(\"#FBLogin\").hide();"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onExploreTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
                 },
                 {
                     "id": "ExtBox1-ext-gen29128",
@@ -76,13 +146,37 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "itemId": "Login",
                         "iconCls": "user",
                         "iconMask": true,
                         "text": "Login",
                         "designer|userClassName": "MyButton1"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen16386",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onLoginTap",
+                                "implHandler": [
+                                    "this.down(\"#FlickrList\").hide();",
+                                    "this.down(\"#HomeBack\").show();",
+                                    "this.down(\"#FBLogin\").show();"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onLoginTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
                 }
             ]
         },
@@ -103,7 +197,7 @@
                 "designer|userClassName": "MyList"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen33563",
@@ -135,6 +229,29 @@
                     "expanded": true
                 }
             ]
+        },
+        {
+            "id": "ExtBox1-ext-gen17698",
+            "type": "button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "centered": true,
+                "height": null,
+                "hidden": true,
+                "id": "FBLogin",
+                "padding": "20px 30px",
+                "ui": "action",
+                "iconCls": "team",
+                "iconMask": true,
+                "text": "Login to Facebook",
+                "designer|userClassName": "MyButton3"
+            },
+            "customConfigs": [],
+            "expanded": true
         }
     ]
 }
