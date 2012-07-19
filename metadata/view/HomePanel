@@ -192,7 +192,7 @@
                 "id": "FlickrList",
                 "layout": "card",
                 "itemCls": "flickr-item",
-                "itemTpl": "<div class=\"image\">\n<img src=\"http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_m.jpg\">\n</div>\n<div class=\"title\">\n<span>{title}</span>\n</div>",
+                "itemTpl": "<div class=\"image\">\n<img src=\"http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg\">\n</div>\n<div class=\"title\">\n<span>{title}</span>\n</div>",
                 "store": "FlickrStore",
                 "designer|userClassName": "MyList"
             },
@@ -243,7 +243,7 @@
                 "height": null,
                 "hidden": true,
                 "id": "FBLogin",
-                "padding": "20px 30px",
+                "padding": "10px 30px",
                 "ui": "action",
                 "iconCls": "team",
                 "iconMask": true,

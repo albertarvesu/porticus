@@ -1,11 +1,11 @@
 .flickr-item {
 	display: inline-block;
-	width: 265px;
+	width: 175px;
 }
 
 .flickr-item .x-list-item-label {
 	border-top: none !important;
-	width: 265px;
+	width: 175px;
 	text-align: center;
 }
 

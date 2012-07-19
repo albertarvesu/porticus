@@ -72,7 +72,7 @@ Ext.define('MyApp.view.HomePanel', {
                 itemCls: 'flickr-item',
                 itemTpl: [
                     '<div class="image">',
-                    '<img src="http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_m.jpg">',
+                    '<img src="http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg">',
                     '</div>',
                     '<div class="title">',
                     '<span>{title}</span>',
@@ -94,7 +94,7 @@ Ext.define('MyApp.view.HomePanel', {
                 centered: true,
                 hidden: true,
                 id: 'FBLogin',
-                padding: '20px 30px',
+                padding: '10px 30px',
                 ui: 'action',
                 iconCls: 'team',
                 iconMask: true,
