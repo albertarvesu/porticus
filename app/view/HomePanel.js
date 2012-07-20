@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('MyApp.view.HomePanel', {
+Ext.define('Porticus.view.HomePanel', {
     extend: 'Ext.Panel',
 
     config: {

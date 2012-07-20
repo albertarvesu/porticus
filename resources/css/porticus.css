@@ -1,3 +1,7 @@
+.x-list-container {
+	text-align: center;
+}
+
 .flickr-item {
 	display: inline-block;
 	width: 175px;

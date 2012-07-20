@@ -16,7 +16,12 @@
         "views": [
             "HomePanel"
         ],
-        "name": "MyApp"
+        "name": "Porticus",
+        "phoneIcon": "resources/images/icon.png",
+        "phoneStartupScreen": "resources/images/phone_startup.png'",
+        "controllers": [
+            "Facebook"
+        ]
     },
     "customConfigs": [],
     "designerId": "application",

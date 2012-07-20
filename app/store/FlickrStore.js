@@ -13,22 +13,22 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('MyApp.store.FlickrStore', {
+Ext.define('Porticus.store.FlickrStore', {
     extend: 'Ext.data.Store',
     requires: [
-        'MyApp.model.Flickr'
+        'Porticus.model.Flickr'
     ],
 
     config: {
         autoLoad: true,
         clearOnPageLoad: false,
-        model: 'MyApp.model.Flickr',
+        model: 'Porticus.model.Flickr',
         pageSize: 10,
         remoteFilter: true,
         storeId: 'FlickrStore',
         proxy: {
             type: 'jsonp',
-            url: 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=78ae61bdf2d3b52155950b1951f114d8&tags=Singapore&format=json&nojsoncallback=1',
+            url: 'http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=0e560c323cc726aebbc8ec639bd11ad2&tags=basketball,court&format=json&nojsoncallback=1',
             callbackKey: 'jsoncallback',
             reader: {
                 type: 'json',

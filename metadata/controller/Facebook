@@ -1,0 +1,16 @@
+{
+    "id": "ExtBox1-ext-gen2967",
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Facebook"
+    },
+    "customConfigs": [],
+    "designerId": "7beae69f-1ca0-475b-8b6b-10a2ae2b206f",
+    "$viewOrder": 0,
+    "expanded": true
+}

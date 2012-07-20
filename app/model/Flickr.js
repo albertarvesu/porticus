@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('MyApp.model.Flickr', {
+Ext.define('Porticus.model.Flickr', {
     extend: 'Ext.data.Model',
     config: {
         fields: [

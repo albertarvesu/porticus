@@ -48,12 +48,20 @@
                 "metadata/resource/css"
             ],
             "className": "css"
+        },
+        "7beae69f-1ca0-475b-8b6b-10a2ae2b206f": {
+            "paths": [
+                "metadata/controller/Facebook",
+                "app/controller/override/Facebook.js",
+                "app/controller/Facebook.js"
+            ],
+            "className": "Facebook"
         }
     },
     "expandedState": {
         "data": true,
         "model": false,
-        "component": true,
+        "component": false,
         "controller": true,
         "resource": true
     }
