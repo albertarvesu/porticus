@@ -12,5 +12,119 @@
     "customConfigs": [],
     "designerId": "7beae69f-1ca0-475b-8b6b-10a2ae2b206f",
     "$viewOrder": 0,
-    "expanded": true
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen3839",
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    "",
+                    "window.fbAsyncInit = Ext.bind(this.onFacebookInit, this);",
+                    "",
+                    "(function(d){",
+                    "    var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}",
+                    "    js = d.createElement('script'); js.id = id; js.async = true;",
+                    "    js.src = \"//connect.facebook.net/en_US/all.js\";",
+                    "    d.getElementsByTagName('head')[0].appendChild(js);",
+                    "}(document));"
+                ],
+                "designer|userClassName": "init"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-basic-function",
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen5142",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onFacebookInit",
+                "implHandler": [
+                    "",
+                    "var me = this;",
+                    "",
+                    "FB.init({",
+                    "    appId  : \"327361870688267\",",
+                    "    cookie : true",
+                    "});",
+                    "",
+                    "FB.Event.subscribe('auth.logout', Ext.bind(me.onLogout, me));",
+                    "",
+                    "",
+                    "FB.getLoginStatus(function(response) {",
+                    "",
+                    "    clearTimeout(me.fbLoginTimeout);",
+                    "",
+                    "    me.hasCheckedStatus = true;",
+                    "",
+                    "    Ext.Viewport.setMasked(false);",
+                    "",
+                    "",
+                    "    if (response.status == 'connected') {",
+                    "        me.onLogin();",
+                    "    } else {",
+                    "        me.login();",
+                    "    }",
+                    "});",
+                    "",
+                    "me.fbLoginTimeout = setTimeout(function() {",
+                    "    return;",
+                    "    Ext.Viewport.setMasked(false);",
+                    "",
+                    "    Ext.create('Ext.MessageBox', {",
+                    "        title: 'Facebook Error',",
+                    "        message: [",
+                    "            'Facebook Authentication is not responding. ',",
+                    "            'Please check your Facebook app is correctly configured, ',",
+                    "            'then check the network log for calls to Facebook for more information.',",
+                    "            'Restart the app to try again.'",
+                    "        ].join('')",
+                    "    }).show();",
+                    "",
+                    "}, 10000);",
+                    ""
+                ],
+                "designer|userClassName": "onFacebookInit"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen9342",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "login",
+                "implHandler": [
+                    "",
+                    "var homePanel = Ext.getCmp('HomePanel');",
+                    "homePanel",
+                    "    .down(\"#FBLogin\")",
+                    "    .setText(\"Login to Facebook\");"
+                ],
+                "designer|userClassName": "login"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
 }

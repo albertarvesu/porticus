@@ -17,6 +17,7 @@ Ext.define('Porticus.view.HomePanel', {
     extend: 'Ext.Panel',
 
     config: {
+        id: 'HomePanel',
         layout: {
             animation: 'cube',
             type: 'card'
@@ -94,6 +95,7 @@ Ext.define('Porticus.view.HomePanel', {
                 centered: true,
                 hidden: true,
                 id: 'FBLogin',
+                itemId: 'mybutton3',
                 padding: '10px 30px',
                 ui: 'action',
                 iconCls: 'team',
@@ -116,26 +118,42 @@ Ext.define('Porticus.view.HomePanel', {
                 fn: 'onLoginTap',
                 event: 'tap',
                 delegate: '#Login'
+            },
+            {
+                fn: 'onFBLoginTap',
+                event: 'tap',
+                delegate: '#FBLogin'
             }
         ]
     },
 
     onHomeBackTap: function(button, e, options) {
-        this.down("#FlickrList").show();
-        this.down("#HomeBack").hide();
-        this.down("#FBLogin").hide();
+        this.toggleView(true);
     },
 
     onExploreTap: function(button, e, options) {
-        this.down("#FlickrList").show();
-        this.down("#HomeBack").hide();
-        this.down("#FBLogin").hide();
+        this.toggleView(true);
     },
 
     onLoginTap: function(button, e, options) {
-        this.down("#FlickrList").hide();
-        this.down("#HomeBack").show();
-        this.down("#FBLogin").show();
+        this.toggleView(false);
+    },
+
+    onFBLoginTap: function(button, e, options) {
+
+    },
+
+    toggleView: function(main) {
+
+        if(main) {
+            this.down("#FlickrList").show();
+            this.down("#HomeBack").hide();
+            this.down("#FBLogin").hide();
+        } else {
+            this.down("#FlickrList").hide();
+            this.down("#HomeBack").show();
+            this.down("#FBLogin").show();
+        }
     }
 
 });

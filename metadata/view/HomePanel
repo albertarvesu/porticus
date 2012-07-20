@@ -8,6 +8,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|initialView": true,
+        "id": "HomePanel",
         "layout": "card",
         "designer|userClassName": "HomePanel",
         "container|animation": "cube"
@@ -51,7 +52,7 @@
                         "designer|userClassName": "MyButton2"
                     },
                     "customConfigs": [],
-                    "expanded": true,
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen13767",
@@ -64,9 +65,7 @@
                             "userConfig": {
                                 "fn": "onHomeBackTap",
                                 "implHandler": [
-                                    "this.down(\"#FlickrList\").show();",
-                                    "this.down(\"#HomeBack\").hide();",
-                                    "this.down(\"#FBLogin\").hide();"
+                                    "this.toggleView(true);"
                                 ],
                                 "name": "tap",
                                 "designer|userClassName": "onHomeBackTap"
@@ -112,7 +111,7 @@
                         "designer|userClassName": "MyButton"
                     },
                     "customConfigs": [],
-                    "expanded": true,
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen17131",
@@ -125,9 +124,7 @@
                             "userConfig": {
                                 "fn": "onExploreTap",
                                 "implHandler": [
-                                    "this.down(\"#FlickrList\").show();",
-                                    "this.down(\"#HomeBack\").hide();",
-                                    "this.down(\"#FBLogin\").hide();"
+                                    "this.toggleView(true);"
                                 ],
                                 "name": "tap",
                                 "designer|userClassName": "onExploreTap"
@@ -153,7 +150,7 @@
                         "designer|userClassName": "MyButton1"
                     },
                     "customConfigs": [],
-                    "expanded": true,
+                    "expanded": false,
                     "cn": [
                         {
                             "id": "ExtBox1-ext-gen16386",
@@ -166,9 +163,7 @@
                             "userConfig": {
                                 "fn": "onLoginTap",
                                 "implHandler": [
-                                    "this.down(\"#FlickrList\").hide();",
-                                    "this.down(\"#HomeBack\").show();",
-                                    "this.down(\"#FBLogin\").show();"
+                                    "this.toggleView(false);"
                                 ],
                                 "name": "tap",
                                 "designer|userClassName": "onLoginTap"
@@ -243,12 +238,64 @@
                 "height": null,
                 "hidden": true,
                 "id": "FBLogin",
+                "itemId": "mybutton3",
                 "padding": "10px 30px",
                 "ui": "action",
                 "iconCls": "team",
                 "iconMask": true,
                 "text": "Login to Facebook",
                 "designer|userClassName": "MyButton3"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen18016",
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onFBLoginTap",
+                        "implHandler": [
+                            ""
+                        ],
+                        "name": "tap",
+                        "designer|userClassName": "onFBLoginTap"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen10588",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "toggleView",
+                "designer|params": [
+                    "main"
+                ],
+                "implHandler": [
+                    "",
+                    "if(main) {",
+                    "    this.down(\"#FlickrList\").show();",
+                    "    this.down(\"#HomeBack\").hide();",
+                    "    this.down(\"#FBLogin\").hide();",
+                    "} else {",
+                    "    this.down(\"#FlickrList\").hide();",
+                    "    this.down(\"#HomeBack\").show();",
+                    "    this.down(\"#FBLogin\").show();",
+                    "}"
+                ],
+                "designer|userClassName": "toggleView"
             },
             "customConfigs": [],
             "expanded": true
