@@ -1,0 +1,145 @@
+{
+    "id": "ExtBox1-ext-gen18947",
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "MainPanel",
+        "designer|userClassName": "MainPanel"
+    },
+    "customConfigs": [],
+    "designerId": "a097a0ea-6f14-46b0-a9b5-70b328d91703",
+    "$viewOrder": 1,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen19383",
+            "type": "titlebar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "title": "Porticus",
+                "designer|userClassName": "MyTitleBar1"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen19686",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "console.log(\"asds\");"
+                ],
+                "designer|userClassName": "initialize"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen20169",
+            "type": "toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "bottom",
+                "id": "MainToolbar",
+                "designer|userClassName": "MyToolbar1",
+                "container|align": "center",
+                "container|pack": "center"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen20530",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "HomeButton",
+                        "iconCls": "home",
+                        "iconMask": true,
+                        "text": null,
+                        "designer|userClassName": "MyButton3"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen20701",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "PopularButton",
+                        "iconCls": "star",
+                        "iconMask": true,
+                        "text": null,
+                        "designer|userClassName": "MyButton4"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen20874",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "CameraButton",
+                        "iconCls": "bookmarks",
+                        "iconMask": true,
+                        "text": "",
+                        "designer|userClassName": "MyButton5"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen23140",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "Logout",
+                        "iconCls": "user",
+                        "iconMask": true,
+                        "text": null,
+                        "designer|userClassName": "MyButton6"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

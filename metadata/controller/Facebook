@@ -59,7 +59,7 @@
                     "var me = this;",
                     "",
                     "FB.init({",
-                    "    appId  : \"327361870688267\",",
+                    "    appId  : Porticus.app.facebookAppId,",
                     "    cookie : true",
                     "});",
                     "",
@@ -83,16 +83,16 @@
                     "});",
                     "",
                     "me.fbLoginTimeout = setTimeout(function() {",
-                    "    return;",
+                    "",
                     "    Ext.Viewport.setMasked(false);",
                     "",
                     "    Ext.create('Ext.MessageBox', {",
                     "        title: 'Facebook Error',",
                     "        message: [",
-                    "            'Facebook Authentication is not responding. ',",
-                    "            'Please check your Facebook app is correctly configured, ',",
-                    "            'then check the network log for calls to Facebook for more information.',",
-                    "            'Restart the app to try again.'",
+                    "        'Facebook Authentication is not responding. ',",
+                    "        'Please check your Facebook app is correctly configured, ',",
+                    "        'then check the network log for calls to Facebook for more information.',",
+                    "        'Restart the app to try again.'",
                     "        ].join('')",
                     "    }).show();",
                     "",
@@ -116,12 +116,66 @@
                 "fn": "login",
                 "implHandler": [
                     "",
-                    "var homePanel = Ext.getCmp('HomePanel');",
-                    "homePanel",
-                    "    .down(\"#FBLogin\")",
-                    "    .setText(\"Login to Facebook\");"
+                    "Ext.getCmp('HomePanel').showAuthenticateText();",
+                    "",
+                    "",
+                    "",
+                    ""
                 ],
                 "designer|userClassName": "login"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen14180",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLogout",
+                "implHandler": [
+                    ""
+                ],
+                "designer|userClassName": "onLogout"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen14476",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLogin",
+                "implHandler": [
+                    "",
+                    "var me = this,",
+                    "            errTitle;",
+                    "",
+                    "FB.api('/me', function(response) {",
+                    "",
+                    "    if (response.error) {",
+                    "        FB.logout();",
+                    "",
+                    "        errTitle = \"Facebook \" + response.error.type + \" error\";",
+                    "        Ext.Msg.alert(errTitle, response.error.message, function() {",
+                    "            me.login();",
+                    "        });",
+                    "    } else {",
+                    "        Porticus.fbUser = response;",
+                    "        Ext.Viewport.setActiveItem(Ext.create('Porticus.view.MainPanel'));",
+                    "    }",
+                    "});"
+                ],
+                "designer|userClassName": "onLogin"
             },
             "customConfigs": [],
             "expanded": true

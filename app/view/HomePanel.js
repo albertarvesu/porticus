@@ -24,6 +24,32 @@ Ext.define('Porticus.view.HomePanel', {
         },
         items: [
             {
+                xtype: 'list',
+                id: 'FlickrList',
+                layout: {
+                    type: 'card'
+                },
+                itemCls: 'flickr-item',
+                itemTpl: [
+                    '<div class="image">',
+                    '<img src="http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg">',
+                    '</div>',
+                    '<div class="title">',
+                    '<span>{title}</span>',
+                    '</div>'
+                ],
+                store: 'FlickrStore',
+                plugins: [
+                    {
+                        type: 'pullrefresh'
+                    },
+                    {
+                        autoPaging: true,
+                        type: 'listpaging'
+                    }
+                ]
+            },
+            {
                 xtype: 'titlebar',
                 docked: 'top',
                 title: 'Porticus',
@@ -65,42 +91,8 @@ Ext.define('Porticus.view.HomePanel', {
                 ]
             },
             {
-                xtype: 'list',
-                id: 'FlickrList',
-                layout: {
-                    type: 'card'
-                },
-                itemCls: 'flickr-item',
-                itemTpl: [
-                    '<div class="image">',
-                    '<img src="http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg">',
-                    '</div>',
-                    '<div class="title">',
-                    '<span>{title}</span>',
-                    '</div>'
-                ],
-                store: 'FlickrStore',
-                plugins: [
-                    {
-                        type: 'pullrefresh'
-                    },
-                    {
-                        autoPaging: true,
-                        type: 'listpaging'
-                    }
-                ]
-            },
-            {
-                xtype: 'button',
-                centered: true,
-                hidden: true,
-                id: 'FBLogin',
-                itemId: 'mybutton3',
-                padding: '10px 30px',
-                ui: 'action',
-                iconCls: 'team',
-                iconMask: true,
-                text: 'Login to Facebook'
+                xtype: 'panel',
+                id: 'Authenticate'
             }
         ],
         listeners: [
@@ -118,11 +110,6 @@ Ext.define('Porticus.view.HomePanel', {
                 fn: 'onLoginTap',
                 event: 'tap',
                 delegate: '#Login'
-            },
-            {
-                fn: 'onFBLoginTap',
-                event: 'tap',
-                delegate: '#FBLogin'
             }
         ]
     },
@@ -139,21 +126,38 @@ Ext.define('Porticus.view.HomePanel', {
         this.toggleView(false);
     },
 
-    onFBLoginTap: function(button, e, options) {
-
-    },
-
     toggleView: function(main) {
 
         if(main) {
             this.down("#FlickrList").show();
             this.down("#HomeBack").hide();
-            this.down("#FBLogin").hide();
+            this.down("#Authenticate").hide();
         } else {
             this.down("#FlickrList").hide();
             this.down("#HomeBack").show();
-            this.down("#FBLogin").show();
+            this.down("#Authenticate").show();
         }
+    },
+
+    showAuthenticateText: function() {
+
+        var redirectUrl = Ext.Object.toQueryString({
+            redirect_uri: window.location.protocol + "//" + window.location.host + window.location.pathname,
+            client_id: Porticus.app.facebookAppId,
+            response_type: 'token'
+        });
+
+        this
+        .down("#Authenticate")
+        .setHtml([
+        '<div class="fbAuthenticate">',
+        '<h2>Welcome to Porticus Mobile Gallery</h2>',
+        '<p>This app lets you organize all your photo from different photo-sharing websites like Flickr.</p>',
+        '<p>Login your Facebook account below.</p>',
+        '<a class="fbLogin" href="https://m.facebook.com/dialog/oauth?' + redirectUrl + '"></a>',
+        '<div class="fb-facepile" data-app-id="' + Porticus.app.facebookAppId + '" data-max-rows="2" data-width="300"></div>',
+        '</div>'
+        ].join(''));
     }
 
 });

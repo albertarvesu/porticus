@@ -35,7 +35,7 @@ Ext.define('Porticus.controller.Facebook', {
         var me = this;
 
         FB.init({
-            appId  : "327361870688267",
+            appId  : Porticus.app.facebookAppId,
             cookie : true
         });
 
@@ -59,7 +59,7 @@ Ext.define('Porticus.controller.Facebook', {
         });
 
         me.fbLoginTimeout = setTimeout(function() {
-            return;
+
             Ext.Viewport.setMasked(false);
 
             Ext.create('Ext.MessageBox', {
@@ -78,10 +78,36 @@ Ext.define('Porticus.controller.Facebook', {
 
     login: function() {
 
-        var homePanel = Ext.getCmp('HomePanel');
-        homePanel
-        .down("#FBLogin")
-        .setText("Login to Facebook");
+        Ext.getCmp('HomePanel').showAuthenticateText();
+
+
+
+
+    },
+
+    onLogout: function() {
+
+    },
+
+    onLogin: function() {
+
+        var me = this,
+            errTitle;
+
+        FB.api('/me', function(response) {
+
+            if (response.error) {
+                FB.logout();
+
+                errTitle = "Facebook " + response.error.type + " error";
+                Ext.Msg.alert(errTitle, response.error.message, function() {
+                    me.login();
+                });
+            } else {
+                Porticus.fbUser = response;
+                Ext.Viewport.setActiveItem(Ext.create('Porticus.view.MainPanel'));
+            }
+        });
     }
 
 });

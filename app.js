@@ -25,8 +25,10 @@ Ext.application({
         'FlickrStore'
     ],
     views: [
-        'HomePanel'
+        'HomePanel',
+        'MainPanel'
     ],
+    icon: 'resources/images/icon.png',
     name: 'Porticus',
     phoneIcon: 'resources/images/icon.png',
     phoneStartupScreen: 'resources/images/phone_startup.png\'',
@@ -36,6 +38,7 @@ Ext.application({
 
     launch: function() {
 
+        this.facebookAppId = "327361870688267";
         Ext.create('Porticus.view.HomePanel', {fullscreen: true});
     }
 

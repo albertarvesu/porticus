@@ -56,6 +56,14 @@
                 "app/controller/Facebook.js"
             ],
             "className": "Facebook"
+        },
+        "a097a0ea-6f14-46b0-a9b5-70b328d91703": {
+            "paths": [
+                "metadata/view/MainPanel",
+                "app/view/override/MainPanel.js",
+                "app/view/MainPanel.js"
+            ],
+            "className": "MainPanel"
         }
     },
     "expandedState": {

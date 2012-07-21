@@ -14,8 +14,10 @@
             "FlickrStore"
         ],
         "views": [
-            "HomePanel"
+            "HomePanel",
+            "MainPanel"
         ],
+        "icon": "resources/images/icon.png",
         "name": "Porticus",
         "phoneIcon": "resources/images/icon.png",
         "phoneStartupScreen": "resources/images/phone_startup.png'",
@@ -27,5 +29,27 @@
     "designerId": "application",
     "$viewOrder": 0,
     "iconCls": "icon-application",
-    "expanded": true
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen11589",
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "",
+                    "this.facebookAppId = \"327361870688267\";"
+                ],
+                "designer|userClassName": "launch"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-basic-function",
+            "expanded": true
+        }
+    ]
 }
