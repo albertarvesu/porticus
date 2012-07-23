@@ -18,33 +18,58 @@ Ext.define('Porticus.view.MainPanel', {
 
     config: {
         id: 'MainPanel',
+        ui: '',
+        layout: {
+            type: 'card'
+        },
         items: [
             {
                 xtype: 'titlebar',
                 docked: 'top',
+                id: 'MainTitlebar',
                 title: 'Porticus'
+            },
+            {
+                xtype: 'list',
+                id: 'WallItemList',
+                layout: {
+                    type: 'card'
+                },
+                itemCls: 'flickr-item',
+                itemTpl: [
+                    '<div class="image">',
+                    '<img src="http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg">',
+                    '</div>',
+                    '<div class="title">',
+                    '<span>{title}</span>',
+                    '</div>'
+                ],
+                store: 'FlickrStore',
+                plugins: [
+                    {
+                        type: 'listpaging'
+                    },
+                    {
+                        type: 'pullrefresh'
+                    }
+                ]
             },
             {
                 xtype: 'toolbar',
                 docked: 'bottom',
                 id: 'MainToolbar',
                 layout: {
-                    align: 'center',
                     pack: 'center',
                     type: 'hbox'
                 },
                 items: [
                     {
                         xtype: 'button',
+                        disabled: true,
                         id: 'HomeButton',
                         iconCls: 'home',
-                        iconMask: true
-                    },
-                    {
-                        xtype: 'button',
-                        id: 'PopularButton',
-                        iconCls: 'star',
-                        iconMask: true
+                        iconMask: true,
+                        text: ''
                     },
                     {
                         xtype: 'button',
@@ -55,9 +80,10 @@ Ext.define('Porticus.view.MainPanel', {
                     },
                     {
                         xtype: 'button',
-                        id: 'Logout',
-                        iconCls: 'user',
-                        iconMask: true
+                        id: 'SettingsButton',
+                        iconCls: 'settings',
+                        iconMask: true,
+                        text: ''
                     }
                 ]
             }
@@ -65,7 +91,18 @@ Ext.define('Porticus.view.MainPanel', {
     },
 
     initialize: function() {
-        console.log("asds");
+
+        this.callParent();
+
+        // Enable the Tap event on the profile picture in the toolbar, so we can show a logout button
+        var meta = Ext.getCmp('SettingsButton');
+
+        if (meta) {
+            meta.element.on('tap', function(e) {
+                meta.fireEvent('tap', meta, e);
+            });
+        }
+
     }
 
 });

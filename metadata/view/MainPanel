@@ -8,6 +8,8 @@
     "codeClass": null,
     "userConfig": {
         "id": "MainPanel",
+        "ui": "",
+        "layout": "card",
         "designer|userClassName": "MainPanel"
     },
     "customConfigs": [],
@@ -15,22 +17,6 @@
     "$viewOrder": 1,
     "expanded": true,
     "cn": [
-        {
-            "id": "ExtBox1-ext-gen19383",
-            "type": "titlebar",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "docked": "top",
-                "title": "Porticus",
-                "designer|userClassName": "MyTitleBar1"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
         {
             "id": "ExtBox1-ext-gen19686",
             "type": "basicfunction",
@@ -42,7 +28,18 @@
             "userConfig": {
                 "fn": "initialize",
                 "implHandler": [
-                    "console.log(\"asds\");"
+                    "",
+                    "this.callParent();",
+                    "",
+                    "// Enable the Tap event on the profile picture in the toolbar, so we can show a logout button",
+                    "var meta = Ext.getCmp('SettingsButton');",
+                    "",
+                    "if (meta) {",
+                    "    meta.element.on('tap', function(e) {",
+                    "        meta.fireEvent('tap', meta, e);",
+                    "    });",
+                    "}",
+                    ""
                 ],
                 "designer|userClassName": "initialize"
             },
@@ -50,7 +47,73 @@
             "expanded": true
         },
         {
-            "id": "ExtBox1-ext-gen20169",
+            "id": "ExtBox1-ext-gen26413",
+            "type": "titlebar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "id": "MainTitlebar",
+                "title": "Porticus",
+                "designer|userClassName": "MyTitleBar1"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen27131",
+            "type": "list",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "WallItemList",
+                "layout": "card",
+                "itemCls": "flickr-item",
+                "itemTpl": "<div class=\"image\">\n<img src=\"http://farm{farm}.staticflickr.com/{server}/{id}_{secret}_q.jpg\">\n</div>\n<div class=\"title\">\n<span>{title}</span>\n</div>",
+                "store": "FlickrStore",
+                "designer|userClassName": "MyList1"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen27506",
+                    "type": "listpaging",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyListPagingPlugin1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen27649",
+                    "type": "pullrefresh",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyPullRefreshPlugin1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen26663",
             "type": "toolbar",
             "reference": {
                 "name": "items",
@@ -61,14 +124,13 @@
                 "docked": "bottom",
                 "id": "MainToolbar",
                 "designer|userClassName": "MyToolbar1",
-                "container|align": "center",
                 "container|pack": "center"
             },
             "customConfigs": [],
             "expanded": true,
             "cn": [
                 {
-                    "id": "ExtBox1-ext-gen20530",
+                    "id": "ExtBox1-ext-gen28481",
                     "type": "button",
                     "reference": {
                         "name": "items",
@@ -76,35 +138,18 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "disabled": true,
                         "id": "HomeButton",
                         "iconCls": "home",
                         "iconMask": true,
-                        "text": null,
+                        "text": "",
                         "designer|userClassName": "MyButton3"
                     },
                     "customConfigs": [],
                     "expanded": true
                 },
                 {
-                    "id": "ExtBox1-ext-gen20701",
-                    "type": "button",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "id": "PopularButton",
-                        "iconCls": "star",
-                        "iconMask": true,
-                        "text": null,
-                        "designer|userClassName": "MyButton4"
-                    },
-                    "customConfigs": [],
-                    "expanded": true
-                },
-                {
-                    "id": "ExtBox1-ext-gen20874",
+                    "id": "ExtBox1-ext-gen28658",
                     "type": "button",
                     "reference": {
                         "name": "items",
@@ -116,13 +161,13 @@
                         "iconCls": "bookmarks",
                         "iconMask": true,
                         "text": "",
-                        "designer|userClassName": "MyButton5"
+                        "designer|userClassName": "MyButton4"
                     },
                     "customConfigs": [],
                     "expanded": true
                 },
                 {
-                    "id": "ExtBox1-ext-gen23140",
+                    "id": "ExtBox1-ext-gen28837",
                     "type": "button",
                     "reference": {
                         "name": "items",
@@ -130,11 +175,11 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "id": "Logout",
-                        "iconCls": "user",
+                        "id": "SettingsButton",
+                        "iconCls": "settings",
                         "iconMask": true,
-                        "text": null,
-                        "designer|userClassName": "MyButton6"
+                        "text": "",
+                        "designer|userClassName": "MyButton5"
                     },
                     "customConfigs": [],
                     "expanded": true

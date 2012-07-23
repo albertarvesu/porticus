@@ -116,31 +116,9 @@
                 "fn": "login",
                 "implHandler": [
                     "",
-                    "Ext.getCmp('HomePanel').showAuthenticateText();",
-                    "",
-                    "",
-                    "",
-                    ""
+                    "Ext.getCmp('HomePanel').showAuthenticateText();"
                 ],
                 "designer|userClassName": "login"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen14180",
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "onLogout",
-                "implHandler": [
-                    ""
-                ],
-                "designer|userClassName": "onLogout"
             },
             "customConfigs": [],
             "expanded": true
@@ -158,7 +136,7 @@
                 "implHandler": [
                     "",
                     "var me = this,",
-                    "            errTitle;",
+                    "    errTitle;",
                     "",
                     "FB.api('/me', function(response) {",
                     "",
@@ -176,6 +154,106 @@
                     "});"
                 ],
                 "designer|userClassName": "onLogin"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen9665",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onUserTap",
+                "designer|params": [
+                    "component"
+                ],
+                "implHandler": [
+                    "",
+                    "",
+                    "if (!this.logoutCmp) {",
+                    "    this.logoutCmp = Ext.create('Ext.Panel', {",
+                    "        width: 120,",
+                    "        top: 0,",
+                    "        left: 0,",
+                    "        padding: 5,",
+                    "        modal: true,",
+                    "        hideOnMaskTap: true,",
+                    "        items: [",
+                    "        {",
+                    "            xtype: 'button',",
+                    "            id: 'DoLogout',",
+                    "            text: 'Logout',",
+                    "            ui: 'decline'",
+                    "        }",
+                    "        ]",
+                    "    });",
+                    "}",
+                    "",
+                    "this.logoutCmp.showBy(component);",
+                    ""
+                ],
+                "name": "tap",
+                "designer|targetType": "Ext.Component",
+                "designer|controlQuery": "#SettingsButton",
+                "designer|userClassName": "onUserTap"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen13318",
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "logout",
+                "designer|params": [
+                    "component"
+                ],
+                "implHandler": [
+                    "",
+                    "Ext.Viewport.setMasked({xtype: 'loadmask', message: 'Logging out...'});",
+                    "FB.logout();"
+                ],
+                "name": "tap",
+                "designer|targetType": "Ext.ActionSheet",
+                "designer|controlQuery": "#DoLogout",
+                "designer|userClassName": "logout"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen22098",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLogout",
+                "implHandler": [
+                    "",
+                    "if (!this.hasCheckedStatus) return;",
+                    "",
+                    "this.login();",
+                    "",
+                    "Ext.Viewport.setMasked(false);",
+                    "Ext.Viewport.setActiveItem(Ext.getCmp('HomePanel'));",
+                    "",
+                    "if(this.logoutCmp) {",
+                    "    this.logoutCmp.destroy();",
+                    "}"
+                ],
+                "designer|userClassName": "onLogout"
             },
             "customConfigs": [],
             "expanded": true

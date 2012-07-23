@@ -27,6 +27,7 @@ Ext.define('Porticus.view.HomePanel', {
                 xtype: 'list',
                 id: 'FlickrList',
                 layout: {
+                    animation: 'cube',
                     type: 'card'
                 },
                 itemCls: 'flickr-item',

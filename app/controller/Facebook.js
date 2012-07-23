@@ -16,6 +16,46 @@
 Ext.define('Porticus.controller.Facebook', {
     extend: 'Ext.app.Controller',
     config: {
+        control: {
+            "#SettingsButton": {
+                tap: 'onUserTap'
+            },
+            "#DoLogout": {
+                tap: 'logout'
+            }
+        }
+    },
+
+    onUserTap: function(component) {
+
+
+        if (!this.logoutCmp) {
+            this.logoutCmp = Ext.create('Ext.Panel', {
+                width: 120,
+                top: 0,
+                left: 0,
+                padding: 5,
+                modal: true,
+                hideOnMaskTap: true,
+                items: [
+                {
+                    xtype: 'button',
+                    id: 'DoLogout',
+                    text: 'Logout',
+                    ui: 'decline'
+                }
+                ]
+            });
+        }
+
+        this.logoutCmp.showBy(component);
+
+    },
+
+    logout: function(component) {
+
+        Ext.Viewport.setMasked({xtype: 'loadmask', message: 'Logging out...'});
+        FB.logout();
     },
 
     init: function(application) {
@@ -79,14 +119,6 @@ Ext.define('Porticus.controller.Facebook', {
     login: function() {
 
         Ext.getCmp('HomePanel').showAuthenticateText();
-
-
-
-
-    },
-
-    onLogout: function() {
-
     },
 
     onLogin: function() {
@@ -108,6 +140,20 @@ Ext.define('Porticus.controller.Facebook', {
                 Ext.Viewport.setActiveItem(Ext.create('Porticus.view.MainPanel'));
             }
         });
+    },
+
+    onLogout: function() {
+
+        if (!this.hasCheckedStatus) return;
+
+        this.login();
+
+        Ext.Viewport.setMasked(false);
+        Ext.Viewport.setActiveItem(Ext.getCmp('HomePanel'));
+
+        if(this.logoutCmp) {
+            this.logoutCmp.destroy();
+        }
     }
 
 });
