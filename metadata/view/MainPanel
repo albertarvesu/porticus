@@ -31,6 +31,8 @@
                     "",
                     "this.callParent();",
                     "",
+                    "this.setUserAvatar();",
+                    "",
                     "// Enable the Tap event on the profile picture in the toolbar, so we can show a logout button",
                     "var meta = Ext.getCmp('SettingsButton');",
                     "",
@@ -57,11 +59,58 @@
             "userConfig": {
                 "docked": "top",
                 "id": "MainTitlebar",
-                "title": "Porticus",
-                "designer|userClassName": "MyTitleBar1"
+                "title": "",
+                "designer|userClassName": "MyTitleBar1",
+                "container|align": "center"
             },
             "customConfigs": [],
-            "expanded": true
+            "expanded": false,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen14420",
+                    "type": "image",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": "right",
+                        "height": 50,
+                        "id": "FBAvatar",
+                        "margin": null,
+                        "padding": "",
+                        "top": null,
+                        "ui": "",
+                        "width": 50,
+                        "src": "resources/images/default_profile_picture.jpg",
+                        "designer|userClassName": "MyImage",
+                        "align": "right"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen5900",
+                    "type": "label",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "fbUsername"
+                        ],
+                        "docked": null,
+                        "html": "Albert Arvesu",
+                        "designer|userClassName": "MyLabel",
+                        "align": "right"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
         },
         {
             "id": "ExtBox1-ext-gen27131",
@@ -80,7 +129,7 @@
                 "designer|userClassName": "MyList1"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen27506",
@@ -127,7 +176,7 @@
                 "container|pack": "center"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen28481",
@@ -140,13 +189,41 @@
                     "userConfig": {
                         "disabled": true,
                         "id": "HomeButton",
+                        "itemId": "mybutton6",
                         "iconCls": "home",
                         "iconMask": true,
                         "text": "",
                         "designer|userClassName": "MyButton3"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen12548",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onHomeButtonTap",
+                                "implHandler": [
+                                    "",
+                                    "//disable the home button,  enable the camera button",
+                                    "button.disable();",
+                                    "Ext.getCmp('CameraButton').enable();",
+                                    "",
+                                    "//show the wall items",
+                                    "Ext.getCmp('WallItemList').show();"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onHomeButtonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
                 },
                 {
                     "id": "ExtBox1-ext-gen28658",
@@ -158,13 +235,42 @@
                     "codeClass": null,
                     "userConfig": {
                         "id": "CameraButton",
+                        "itemId": "mybutton4",
                         "iconCls": "bookmarks",
                         "iconMask": true,
                         "text": "",
                         "designer|userClassName": "MyButton4"
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "expanded": false,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen34696",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onCameraButtonTap",
+                                "implHandler": [
+                                    "",
+                                    "//disable the camera button,  enable the home button",
+                                    "button.disable();",
+                                    "Ext.getCmp('HomeButton').enable();",
+                                    "",
+                                    "",
+                                    "//hide the wall items",
+                                    "Ext.getCmp('WallItemList').hide();"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onCameraButtonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
                 },
                 {
                     "id": "ExtBox1-ext-gen28837",
@@ -185,6 +291,27 @@
                     "expanded": true
                 }
             ]
+        },
+        {
+            "id": "ExtBox1-ext-gen15386",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setUserAvatar",
+                "implHandler": [
+                    "",
+                    "this",
+                    "    .down(\"#FBAvatar\")",
+                    "    .setSrc(\"http://graph.facebook.com/\" + Porticus.fbUser.username + \"/picture\");"
+                ],
+                "designer|userClassName": "setUserAvatar"
+            },
+            "customConfigs": [],
+            "expanded": true
         }
     ]
 }

@@ -41,3 +41,11 @@
 	display: block;
 	margin: 15px 0;
 }
+
+
+.fbUsername {
+	color: white;
+	font-size: 12px;
+	font-weight: bold;
+	margin-right: 5px;
+}

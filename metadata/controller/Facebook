@@ -82,6 +82,7 @@
                     "    }",
                     "});",
                     "",
+                    "",
                     "me.fbLoginTimeout = setTimeout(function() {",
                     "",
                     "    Ext.Viewport.setMasked(false);",
@@ -115,7 +116,17 @@
             "userConfig": {
                 "fn": "login",
                 "implHandler": [
+                    "/*",
+                    "var permissions = [",
+                    "'email',",
+                    "'user_photos'",
+                    "];",
                     "",
+                    "FB.login(function(response) {",
+                    "    console.log(response);",
+                    "    Ext.getCmp('HomePanel').showAuthenticateText();",
+                    "}, {scope: permissions.join(\",\")});",
+                    "*/",
                     "Ext.getCmp('HomePanel').showAuthenticateText();"
                 ],
                 "designer|userClassName": "login"
@@ -147,8 +158,12 @@
                     "        Ext.Msg.alert(errTitle, response.error.message, function() {",
                     "            me.login();",
                     "        });",
+                    "",
                     "    } else {",
+                    "",
                     "        Porticus.fbUser = response;",
+                    "",
+                    "        //Ext.getCmp('HomePanel').destroy();",
                     "        Ext.Viewport.setActiveItem(Ext.create('Porticus.view.MainPanel'));",
                     "    }",
                     "});"
@@ -172,7 +187,6 @@
                     "component"
                 ],
                 "implHandler": [
-                    "",
                     "",
                     "if (!this.logoutCmp) {",
                     "    this.logoutCmp = Ext.create('Ext.Panel', {",

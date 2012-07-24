@@ -124,7 +124,23 @@ Ext.define('Porticus.view.HomePanel', {
     },
 
     onLoginTap: function(button, e, options) {
+
         this.toggleView(false);
+
+        console.log(Ext.device.Notification);
+        /*
+        Ext.device.Notification.show({
+        title: 'One Button',
+        message: 'This is a simple notification with one button.',
+
+        callback: function(button) {
+        //When the user taps a button, show another notification
+        Ext.device.Notification.show({
+            message: 'You pressed: "' + button + '"'
+        });
+    }
+        });
+        */
     },
 
     toggleView: function(main) {

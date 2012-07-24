@@ -27,7 +27,32 @@ Ext.define('Porticus.view.MainPanel', {
                 xtype: 'titlebar',
                 docked: 'top',
                 id: 'MainTitlebar',
-                title: 'Porticus'
+                title: '',
+                layout: {
+                    align: 'center',
+                    type: 'hbox'
+                },
+                items: [
+                    {
+                        xtype: 'image',
+                        docked: 'right',
+                        height: 50,
+                        id: 'FBAvatar',
+                        padding: '',
+                        ui: '',
+                        width: 50,
+                        src: 'resources/images/default_profile_picture.jpg',
+                        align: 'right'
+                    },
+                    {
+                        xtype: 'label',
+                        cls: [
+                            'fbUsername'
+                        ],
+                        html: 'Albert Arvesu',
+                        align: 'right'
+                    }
+                ]
             },
             {
                 xtype: 'list',
@@ -67,6 +92,7 @@ Ext.define('Porticus.view.MainPanel', {
                         xtype: 'button',
                         disabled: true,
                         id: 'HomeButton',
+                        itemId: 'mybutton6',
                         iconCls: 'home',
                         iconMask: true,
                         text: ''
@@ -74,6 +100,7 @@ Ext.define('Porticus.view.MainPanel', {
                     {
                         xtype: 'button',
                         id: 'CameraButton',
+                        itemId: 'mybutton4',
                         iconCls: 'bookmarks',
                         iconMask: true,
                         text: ''
@@ -87,12 +114,47 @@ Ext.define('Porticus.view.MainPanel', {
                     }
                 ]
             }
+        ],
+        listeners: [
+            {
+                fn: 'onHomeButtonTap',
+                event: 'tap',
+                delegate: '#HomeButton'
+            },
+            {
+                fn: 'onCameraButtonTap',
+                event: 'tap',
+                delegate: '#CameraButton'
+            }
         ]
+    },
+
+    onHomeButtonTap: function(button, e, options) {
+
+        //disable the home button,  enable the camera button
+        button.disable();
+        Ext.getCmp('CameraButton').enable();
+
+        //show the wall items
+        Ext.getCmp('WallItemList').show();
+    },
+
+    onCameraButtonTap: function(button, e, options) {
+
+        //disable the camera button,  enable the home button
+        button.disable();
+        Ext.getCmp('HomeButton').enable();
+
+
+        //hide the wall items
+        Ext.getCmp('WallItemList').hide();
     },
 
     initialize: function() {
 
         this.callParent();
+
+        this.setUserAvatar();
 
         // Enable the Tap event on the profile picture in the toolbar, so we can show a logout button
         var meta = Ext.getCmp('SettingsButton');
@@ -103,6 +165,13 @@ Ext.define('Porticus.view.MainPanel', {
             });
         }
 
+    },
+
+    setUserAvatar: function() {
+
+        this
+        .down("#FBAvatar")
+        .setSrc("http://graph.facebook.com/" + Porticus.fbUser.username + "/picture");
     }
 
 });

@@ -27,7 +27,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "cls": null,
                 "id": "FlickrList",
                 "layout": "card",
                 "itemCls": "flickr-item",
@@ -37,7 +36,7 @@
                 "container|animation": "cube"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen33563",
@@ -144,7 +143,7 @@
                 "container|pack": "center"
             },
             "customConfigs": [],
-            "expanded": false,
+            "expanded": true,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen28892",
@@ -215,7 +214,23 @@
                             "userConfig": {
                                 "fn": "onLoginTap",
                                 "implHandler": [
-                                    "this.toggleView(false);"
+                                    "",
+                                    "this.toggleView(false);",
+                                    "",
+                                    "console.log(Ext.device.Notification);",
+                                    "/*",
+                                    "Ext.device.Notification.show({",
+                                    "    title: 'One Button',",
+                                    "    message: 'This is a simple notification with one button.',",
+                                    "",
+                                    "    callback: function(button) {",
+                                    "        //When the user taps a button, show another notification",
+                                    "        Ext.device.Notification.show({",
+                                    "            message: 'You pressed: \"' + button + '\"'",
+                                    "        });",
+                                    "    }",
+                                    "});",
+                                    "*/"
                                 ],
                                 "name": "tap",
                                 "designer|userClassName": "onLoginTap"

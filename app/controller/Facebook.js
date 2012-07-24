@@ -28,7 +28,6 @@ Ext.define('Porticus.controller.Facebook', {
 
     onUserTap: function(component) {
 
-
         if (!this.logoutCmp) {
             this.logoutCmp = Ext.create('Ext.Panel', {
                 width: 120,
@@ -98,6 +97,7 @@ Ext.define('Porticus.controller.Facebook', {
             }
         });
 
+
         me.fbLoginTimeout = setTimeout(function() {
 
             Ext.Viewport.setMasked(false);
@@ -117,7 +117,17 @@ Ext.define('Porticus.controller.Facebook', {
     },
 
     login: function() {
+        /*
+        var permissions = [
+        'email',
+        'user_photos'
+        ];
 
+        FB.login(function(response) {
+        console.log(response);
+        Ext.getCmp('HomePanel').showAuthenticateText();
+        }, {scope: permissions.join(",")});
+        */
         Ext.getCmp('HomePanel').showAuthenticateText();
     },
 
@@ -135,8 +145,12 @@ Ext.define('Porticus.controller.Facebook', {
                 Ext.Msg.alert(errTitle, response.error.message, function() {
                     me.login();
                 });
+
             } else {
+
                 Porticus.fbUser = response;
+
+                //Ext.getCmp('HomePanel').destroy();
                 Ext.Viewport.setActiveItem(Ext.create('Porticus.view.MainPanel'));
             }
         });
